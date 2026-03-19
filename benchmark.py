@@ -69,7 +69,7 @@ def run_layer(name, W, rank_label, k):
     _, s_full, _ = torch.linalg.svd(W, full_matrices=False)
     U, s, Vh = trunc_svd_forward(W, k)
 
-    torch.manual_seed(hash(name) & 0xFFFFFFFF)
+    torch.manual_seed(0xdeadbeef)
     dA = torch.randn_like(W)
     gU = torch.randn_like(U)
     gs = torch.randn(k, dtype=W.dtype)
